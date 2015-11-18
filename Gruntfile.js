@@ -58,7 +58,8 @@ module.exports = function(grunt) {
 				files: [
 					{expand: true, cwd: '_dev/js/vendor', src: ['*'], dest: 'static/js/vendor/'},
 					{expand: true, cwd: '_dev/img/', src: ['*'], dest: 'static/img/'},
-					{expand: true, cwd: '_dev/fonts/', src: ['*'], dest: 'static/fonts/'}
+					{expand: true, cwd: '_dev/fonts/', src: ['*'], dest: 'static/fonts/'},
+					{expand: true, cwd: '_dev/templates/', src: ['*'], dest: 'templates/'}
 				]
 			}
 		},
@@ -76,8 +77,7 @@ module.exports = function(grunt) {
 					'page.php' :'_dev/page.php',
 					'author.php' :'_dev/author.php',
 					'archive.php' : '_dev/archive.php',
-					'404.php' : '_dev/404.php',
-					'templates/' : '_dev/templates/*'
+					'404.php' : '_dev/404.php'
 				}
 			}
 		}
