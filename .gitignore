@@ -1,0 +1,12 @@
+*.db
+*.log
+*.pyc
+*.egg-info
+*.DS_Store
+*.egg
+*.php
+var
+extras
+static/
+templates/
+node_modules/
