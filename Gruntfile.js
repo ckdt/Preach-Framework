@@ -76,7 +76,8 @@ module.exports = function(grunt) {
 					'page.php' :'_dev/page.php',
 					'author.php' :'_dev/author.php',
 					'archive.php' : '_dev/archive.php',
-					'404.php' : '_dev/404.php'
+					'404.php' : '_dev/404.php',
+					'templates/' : '_dev/templates/*'
 				}
 			}
 		}
