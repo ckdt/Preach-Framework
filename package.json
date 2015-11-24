@@ -2,13 +2,13 @@
   "name": "preachframework",
   "version": "1.1.0",
   "description": "A Wordpress tool to Preach like a Pro",
-  "author": "Arjen de Bruijn | Ronny Wieckart",
+  "author": "Arjen de Bruijn | Ronny Wieckardt",
   "contributors": [{
     "name": "Arjen de Bruijn",
     "email": "info@arjendebruijn.nl"
   },{
-    "name": "Ronny Wieckart",
-    "email": "support@ckdt.nl"
+    "name": "Ronny Wieckardt",
+    "email": "ronny@ckdt.nl"
   }],
   "main": "Gruntfile.js",
   "scripts": {
