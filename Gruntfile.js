@@ -59,7 +59,7 @@ module.exports = function(grunt) {
 					{expand: true, cwd: '_dev/js/vendor', src: ['*'], dest: 'static/js/vendor/'},
 					{expand: true, cwd: '_dev/img/', src: ['*'], dest: 'static/img/'},
 					{expand: true, cwd: '_dev/fonts/', src: ['*'], dest: 'static/fonts/'},
-					{expand: true, cwd: '_dev/templates/', src: ['*'], dest: 'templates/'}
+					{expand: true, cwd: '_dev/dev-templates/', src: ['*'], dest: 'templates/'}
 				]
 			}
 		},
