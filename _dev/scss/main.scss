@@ -1,6 +1,9 @@
-@import "base/normalize.v3.0.2";
+/*============================== Css reset and plugin styles ===========================*/
 
-/* ============================= Site styling ===========================*/
+@import "base/normalize.v3.0.2";
+@import "plugins/jquery.fullpage.min";
+
+/* =================================== Site styling ====================================*/
 
 @import "base/base";
 //@import "blocks/";
