@@ -2,7 +2,7 @@
 /**
  * @package  WordPress
  * @subpackage  Preach
- * @since   Preach 0.1
+ * @since   Preach 1.1.0
  */
 
 $data = Timber::get_context();
