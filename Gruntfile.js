@@ -6,10 +6,10 @@ module.exports = function(grunt) {
 				banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - ' +
 					'<%= grunt.template.today("yyyy-mm-dd") %> */'
 			},
-			dist: {
+			dev: {
 				files: {
 					'static/js/scripts.min.js': [
-					'_dev/js/plugins.js',
+					'_dev/js/plugins/*.js',
 					'_dev/js/main.js'
 					]
 				}
@@ -21,12 +21,7 @@ module.exports = function(grunt) {
         	},
 			dev: {
 				files: {
-					'_dev/css/main.css': '_dev/scss/main.scss'
-				}
-			},
-			dist: {
-				files: {
-					'static/css/main.min.css': ['_dev/scss/main.scss']
+					'static/css/main.min.css': '_dev/scss/main.scss'
 				}
 			}
 		},
@@ -39,46 +34,42 @@ module.exports = function(grunt) {
                     })
                 ]
             },
-            dist: {
+            dev: {
                 src: 'static/css/*.css'
             }
         },
+        jshint: {
+	    	dev: {
+	    		src: ['_dev/js/main.js']
+	    	}
+	  	},
 		watch: {
 			sass: {
-				files: ['_dev/scss/*'],
-				tasks: 'sass'
+				files: ['_dev/scss/**'],
+				tasks: ['sass', 'postcss'],
+			},
+			jshint: {
+				files: ['_dev/js/main.js'],
+				tasks: 'jshint',
 			},
 			uglify: {
 				files: ['_dev/js/*'],
-				tasks: 'uglify'
+				tasks: 'uglify',
+			},
+			copy: {
+				files: ['_dev/dev-templates/*', '_dev/*.php'],
+				tasks: 'copy',
 			}
 		},
 		copy: {
-			dist: {
+			dev: {
 				files: [
 					{expand: true, cwd: '_dev/js/vendor', src: ['*'], dest: 'static/js/vendor/'},
 					{expand: true, cwd: '_dev/img/', src: ['*'], dest: 'static/img/'},
 					{expand: true, cwd: '_dev/fonts/', src: ['*'], dest: 'static/fonts/'},
-					{expand: true, cwd: '_dev/dev-templates/', src: ['*'], dest: 'templates/'}
+					{expand: true, cwd: '_dev/dev-templates/', src: ['*'], dest: 'templates/'},
+					{expand: true, cwd: '_dev/', src: '*.php', dest: './'}
 				]
-			}
-		},
-		targethtml: {
-			dist: {
-				files: {
-					'footer.php' : '_dev/footer.php',
-					'functions.php' : '_dev/functions.php',
-					'header.php' : '_dev/header.php',
-					'index.php' : '_dev/index.php',
-					'home.php' : '_dev/home.php',
-					'single.php' : '_dev/single.php', 
-					'sidebar.php' :'_dev/sidebar.php',
-					'search.php' : '_dev/search.php',
-					'page.php' :'_dev/page.php',
-					'author.php' :'_dev/author.php',
-					'archive.php' : '_dev/archive.php',
-					'404.php' : '_dev/404.php'
-				}
 			}
 		}
 	});
@@ -87,8 +78,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-postcss');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-watch');
-	grunt.loadNpmTasks("grunt-contrib-copy");
-	grunt.loadNpmTasks('grunt-targethtml');
-	grunt.registerTask('default', ['sass', 'watch', 'postcss']);
-	grunt.registerTask('build', ['sass', 'postcss','uglify', 'copy', 'targethtml']);
+	grunt.loadNpmTasks('grunt-contrib-copy');
+	grunt.loadNpmTasks('grunt-contrib-jshint');
+	grunt.registerTask('build', ['sass', 'postcss', 'jshint', 'uglify', 'copy']);
 };
